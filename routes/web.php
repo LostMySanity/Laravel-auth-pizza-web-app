@@ -16,3 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/pizza', function () {
+    //getting data from the database pretend for now atleast
+    $pizza = [['type' => 'Hawaiian', 'name' =>'veg pizza', 'price' => 10],
+        ['type' => 'italian', 'name' =>'non-veg pizza', 'price' => 15],
+        ['type' => 'Indian', 'name' =>'makahni pizza', 'price' => 10]];
+    
+    return view('pizza',['pizza'=> $pizza,'name' => request('name'),'age' => request('age')]);
+});
+
+Route::get('/pizza/{$id}', function($id) {
+        return view('details',['id' => $id]);
+});
